@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" aria-label="Panchsheel Custom Lab">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="100%" stop-color="#0f1e5c"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F3D26B"/>
+      <stop offset="100%" stop-color="#D4AF37"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#g1)"/>
+  <!-- Petals in a P-like flourish -->
+  <g transform="translate(32 32)">
+    <circle r="18" fill="none" stroke="url(#g2)" stroke-width="2" opacity=".6"/>
+    <path d="M-8 10 L-8 -10 A8 8 0 0 1 0 -10 L0 2 A6 6 0 0 1 -6 8 Z" fill="url(#g2)"/>
+    <circle cx="2" cy="-6" r="2.2" fill="#fff"/>
+  </g>
+</svg>

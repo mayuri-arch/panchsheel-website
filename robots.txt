@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://panchsheelcustomlab.com/sitemap.xml
