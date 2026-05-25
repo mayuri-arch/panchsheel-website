@@ -22,7 +22,135 @@
 <link rel="stylesheet" href="assets/css/styles.css" />
 <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"LocalBusiness","name":"Panchsheel Custom Lab","alternateName":"Panchsheel Customizers Sublimation","image":"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=1200","telephone":["+91-9990903566","+91-8882130530"],"email":"Panchsheel008@gmail.com","address":{"@type":"PostalAddress","streetAddress":"Nandgram","addressLocality":"Ghaziabad","addressRegion":"Uttar Pradesh","addressCountry":"IN"},"url":"https://panchsheelcustomlab.com/","priceRange":"₹₹","openingHours":"Mo-Sa 10:00-20:00","areaServed":"Ghaziabad","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"237"}}
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://panchsheelcustomlab.com/#localbusiness",
+      "name": "Panchsheel Custom Lab",
+      "alternateName": "Panchsheel Customizers Sublimation",
+      "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=1200",
+      "logo": "https://panchsheelcustomlab.com/assets/img/logo.svg",
+      "telephone": ["+91-9990903566", "+91-8882130530"],
+      "email": "Panchsheel008@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Nandgram",
+        "addressLocality": "Ghaziabad",
+        "addressRegion": "Uttar Pradesh",
+        "postalCode": "201003",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 28.6942,
+        "longitude": 77.4412
+      },
+      "url": "https://panchsheelcustomlab.com/",
+      "priceRange": "₹₹",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "10:00",
+          "closes": "20:00"
+        }
+      ],
+      "areaServed": [
+        {
+          "@type": "AdministrativeArea",
+          "name": "Ghaziabad"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Nandgram"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Delhi NCR"
+        }
+      ],
+      "sameAs": [
+        "https://wa.me/919990903566",
+        "https://panchsheel-website.vercel.app/"
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "237"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://panchsheelcustomlab.com/#organization",
+      "name": "Panchsheel Custom Lab",
+      "logo": "https://panchsheelcustomlab.com/assets/img/logo.svg",
+      "url": "https://panchsheelcustomlab.com/",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-9990903566",
+        "contactType": "proprietor",
+        "areaServed": "IN",
+        "availableLanguage": ["Hindi", "English"]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://panchsheelcustomlab.com/#website",
+      "url": "https://panchsheelcustomlab.com/",
+      "name": "Panchsheel Custom Lab",
+      "description": "Premium Custom Printing Studio in Ghaziabad"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://panchsheelcustomlab.com/#service-printing",
+      "name": "Custom Printing Services",
+      "serviceType": "Sublimation & DTF Printing",
+      "provider": {
+        "@id": "https://panchsheelcustomlab.com/#localbusiness"
+      },
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "Ghaziabad"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Printing Services Catalog",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "T-Shirt Printing"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "School Dress Printing"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Mug Printing"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Bottle Printing"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
 </script>
 </head>
 <body>

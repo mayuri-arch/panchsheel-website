@@ -197,7 +197,39 @@
     });
   }
 
+  // Dynamic mobile sticky conversion bar injection
+  const injectStickyBar = () => {
+    if (window.innerWidth >= 768) return; // Desktop doesn't need it
+    if (document.querySelector('.mobile-sticky-bar')) return; // Already injected
+
+    const bar = document.createElement('div');
+    bar.className = 'mobile-sticky-bar';
+    
+    bar.innerHTML = `
+      <div class="sticky-bar-text">
+        <span class="sticky-bar-title" data-en="Custom Printing Quote" data-hi="कस्टम प्रिंटिंग कोट">Custom Printing Quote</span>
+        <span class="sticky-bar-sub" data-en="Talk directly to Sanjay ji" data-hi="संजय जी से व्हाट्सएप पर बात करें">Talk directly to Sanjay ji</span>
+      </div>
+      <a href="https://wa.me/919990903566?text=Hi%20Sanjay%20ji%2C%20I%20visited%20your%20website%20and%20want%20to%20get%20a%20printing%20quote" class="btn btn-whats sticky-bar-btn" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block;vertical-align:middle;margin-right:3px"><path d="M20.5 3.5A11 11 0 0 0 3.3 17.1L2 22l5-1.3a11 11 0 0 0 13.5-17.2zM12 20a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20z"/></svg>
+        <span data-en="WhatsApp Chat" data-hi="व्हाट्सएप चैट">WhatsApp Chat</span>
+      </a>
+    `;
+    
+    document.body.appendChild(bar);
+    
+    // Show/hide on scroll
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 120) {
+        bar.classList.add('visible');
+      } else {
+        bar.classList.remove('visible');
+      }
+    }, { passive: true });
+  };
+
   // Run initial calculations
+  injectStickyBar();
   applyLang(storedLang);
   updateCalculator();
 
