@@ -241,11 +241,11 @@ details.faq p{margin-top:.75rem;color:var(--muted)}
 
 /* Mobile fix */
 .menu-btn{display:none}
-@media(max-width:768px){.menu-btn{display:inline-flex}}
+@media(max-width:1024px){.menu-btn{display:inline-flex}}
 .hide-sm{display:initial}
-@media(max-width:768px){.hide-sm{display:none}}
+@media(max-width:1024px){.hide-sm{display:none}}
 .show-sm{display:none}
-@media(max-width:768px){.show-sm{display:initial}}
+@media(max-width:1024px){.show-sm{display:initial}}
 
 /* ========================= Interactive Calculator ========================= */
 .calc-card {
@@ -422,7 +422,18 @@ html, body {
 }
 
 /* Specificity overrides for responsive menu display */
-@media (max-width: 768px) {
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+@media (max-width: 1024px) {
+  .desktop-nav {
+    display: none !important;
+  }
+  .menu-btn {
+    display: inline-flex !important;
+  }
   .hide-sm {
     display: none !important;
   }
