@@ -710,3 +710,115 @@ body.drawer-active {
   border-radius: 0.5rem !important;
 }
 
+/* Premium Compact Footer Redesign */
+.site-footer {
+  background: #060b1e !important;
+  color: #9aa3bd !important;
+  padding: 3rem 0 2rem !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+.footer-compact-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.footer-compact-top {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .footer-compact-top {
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+  }
+}
+.footer-tagline {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-top: 0.5rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .footer-tagline {
+    text-align: left;
+  }
+}
+.footer-contact-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+.contact-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+  padding: 0.45rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #cbd5e1;
+  transition: all 0.25s ease;
+}
+.contact-chip:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  transform: translateY(-1px);
+}
+.contact-chip.wa:hover {
+  background: rgba(37, 211, 102, 0.15);
+  border-color: rgba(37, 211, 102, 0.3);
+  color: #25d366;
+}
+.contact-chip svg {
+  display: inline-block;
+  vertical-align: middle;
+}
+.footer-compact-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem 2rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  width: 100%;
+}
+.footer-compact-links a {
+  color: #9aa3bd;
+  transition: color 0.2s ease;
+}
+.footer-compact-links a:hover {
+  color: var(--gold);
+}
+.footer-compact-bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.78rem;
+  color: #64748b;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .footer-compact-bottom {
+    flex-direction: row;
+    gap: 2rem;
+  }
+}
+
