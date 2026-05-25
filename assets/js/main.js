@@ -34,12 +34,174 @@
     document.documentElement.lang = lang;
     document.querySelectorAll('.lang-toggle button').forEach((b) => b.classList.toggle('active', b.dataset.lang === lang));
     localStorage.setItem('pcl_lang', lang);
+    if (typeof updateCalculator === 'function') updateCalculator();
   };
   document.querySelectorAll('.lang-toggle button').forEach((b) => b.addEventListener('click', () => applyLang(b.dataset.lang)));
+
+  // ===== WhatsApp Bulk Price Estimator =====
+  const PRICING_DB = {
+    tshirt: {
+      nameEn: 'Round-Neck T-Shirt', nameHi: 'गोल-गला टी-शर्ट',
+      tiers: [
+        { min: 100, price: 89 },
+        { min: 26, price: 109 },
+        { min: 6, price: 129 },
+        { min: 1, price: 149 }
+      ]
+    },
+    polo: {
+      nameEn: 'Polo T-Shirt', nameHi: 'कॉलर वाली पोलो टी-शर्ट',
+      tiers: [
+        { min: 100, price: 159 },
+        { min: 26, price: 189 },
+        { min: 6, price: 219 },
+        { min: 1, price: 249 }
+      ]
+    },
+    mug: {
+      nameEn: 'White Photo Mug', nameHi: 'सफ़ेद फोटो मग',
+      tiers: [
+        { min: 100, price: 79 },
+        { min: 26, price: 99 },
+        { min: 6, price: 109 },
+        { min: 1, price: 129 }
+      ]
+    },
+    bottle: {
+      nameEn: 'Steel Sipper Bottle', nameHi: 'स्टील सिपर बोतल',
+      tiers: [
+        { min: 100, price: 169 },
+        { min: 26, price: 199 },
+        { min: 6, price: 219 },
+        { min: 1, price: 249 }
+      ]
+    },
+    pillow: {
+      nameEn: 'Photo Pillow', nameHi: 'फोटो तकिया (कुशन)',
+      tiers: [
+        { min: 100, price: 179 },
+        { min: 26, price: 199 },
+        { min: 6, price: 229 },
+        { min: 1, price: 249 }
+      ]
+    },
+    frame: {
+      nameEn: 'MDF Photo Frame', nameHi: 'MDF फोटो फ्रेम',
+      tiers: [
+        { min: 100, price: 129 },
+        { min: 26, price: 149 },
+        { min: 6, price: 179 },
+        { min: 1, price: 199 }
+      ]
+    },
+    keychain: {
+      nameEn: 'Photo Keychain', nameHi: 'फोटो कीचेन',
+      tiers: [
+        { min: 100, price: 29 },
+        { min: 26, price: 35 },
+        { min: 6, price: 42 },
+        { min: 1, price: 49 }
+      ]
+    }
+  };
+
+  const calcProduct = document.getElementById('calcProduct');
+  const calcQty = document.getElementById('calcQty');
+  const btnMinus = document.getElementById('calcMinus');
+  const btnPlus = document.getElementById('calcPlus');
+
+  const valUnit = document.getElementById('valUnit');
+  const valTotal = document.getElementById('valTotal');
+  const badgeDisc = document.getElementById('badgeDisc');
+  const btnCalcWa = document.getElementById('btnCalcWa');
+
+  const updateCalculator = () => {
+    if (!calcProduct || !calcQty) return;
+    const prodKey = calcProduct.value;
+    const qty = parseInt(calcQty.value) || 1;
+    const prod = PRICING_DB[prodKey];
+    if (!prod) return;
+
+    let unitPrice = prod.tiers[prod.tiers.length - 1].price;
+    for (const tier of prod.tiers) {
+      if (qty >= tier.min) {
+        unitPrice = tier.price;
+        break;
+      }
+    }
+
+    const totalPrice = unitPrice * qty;
+    const basePrice = prod.tiers[prod.tiers.length - 1].price;
+    const discountPercent = Math.round(((basePrice - unitPrice) / basePrice) * 100);
+
+    if (valUnit) valUnit.innerHTML = `₹${unitPrice}`;
+    
+    if (valTotal) {
+      valTotal.innerHTML = `₹${totalPrice.toLocaleString('en-IN')}`;
+      valTotal.classList.add('pop');
+      setTimeout(() => valTotal.classList.remove('pop'), 120);
+    }
+
+    if (badgeDisc) {
+      if (discountPercent > 0) {
+        badgeDisc.style.display = 'inline-flex';
+        const lang = localStorage.getItem('pcl_lang') || 'en';
+        if (lang === 'hi') {
+          badgeDisc.innerHTML = `✓ ${discountPercent}% होलसेल बचत!`;
+        } else {
+          badgeDisc.innerHTML = `✓ Save ${discountPercent}% Wholesale!`;
+        }
+      } else {
+        badgeDisc.style.display = 'none';
+      }
+    }
+
+    if (btnCalcWa) {
+      const lang = localStorage.getItem('pcl_lang') || 'en';
+      const prodName = lang === 'hi' ? prod.nameHi : prod.nameEn;
+      
+      let waText = '';
+      if (lang === 'hi') {
+        waText = `नमस्ते पंचशील कस्टम लैब,%0A%0Aमुझे एक प्रिंटिंग कोट चाहिए:%0A📦 प्रोडक्ट: ${encodeURIComponent(prodName)}%0A🔢 मात्रा: ${qty} पीस%0A💰 अनुमानित कुल क़ीमत: ₹${totalPrice.toLocaleString('en-IN')}%0A%0Aकृपया डिज़ाइन और ऑर्डर प्रक्रिया के बारे में बताएं।`;
+      } else {
+        waText = `Hi Panchsheel Custom Lab,%0A%0AI would like a printing quote:%0A📦 Product: ${encodeURIComponent(prodName)}%0A🔢 Quantity: ${qty} pcs%0A💰 Estimated Total: ₹${totalPrice.toLocaleString('en-IN')}%0A%0APlease let me know the design and order process.`;
+      }
+      
+      btnCalcWa.setAttribute('href', `https://wa.me/919990903566?text=${waText}`);
+    }
+  };
+
+  if (calcProduct) calcProduct.addEventListener('change', updateCalculator);
+  if (calcQty) {
+    calcQty.addEventListener('input', () => {
+      let v = parseInt(calcQty.value) || 1;
+      if (v < 1) v = 1;
+      calcQty.value = v;
+      updateCalculator();
+    });
+  }
+  if (btnMinus) {
+    btnMinus.addEventListener('click', () => {
+      let v = parseInt(calcQty.value) || 1;
+      if (v > 1) {
+        calcQty.value = v - 1;
+        updateCalculator();
+      }
+    });
+  }
+  if (btnPlus) {
+    btnPlus.addEventListener('click', () => {
+      let v = parseInt(calcQty.value) || 1;
+      calcQty.value = v + 1;
+      updateCalculator();
+    });
+  }
+
+  // Run initial calculations
   applyLang(storedLang);
+  updateCalculator();
 
   // ===== Contact form =====
-  // Using Web3Forms (free, no signup required for basic, or use your key). Fallback = WhatsApp.
   const form = document.getElementById('contactForm');
   if (form) {
     form.addEventListener('submit', async (ev) => {
@@ -56,7 +218,6 @@
       if (err) err.classList.add('hidden');
       if (submitBtn) { submitBtn.disabled = true; submitBtn.dataset.old = submitBtn.innerHTML; submitBtn.innerHTML = 'Sending…'; }
 
-      // Web3Forms key: replace YOUR_WEB3FORMS_KEY with the real key from https://web3forms.com
       const WEB3_KEY = 'YOUR_WEB3FORMS_KEY';
       let sent = false;
       if (WEB3_KEY && WEB3_KEY !== 'YOUR_WEB3FORMS_KEY') {
@@ -77,7 +238,6 @@
         } catch (_) { sent = false; }
       }
 
-      // Always also open WhatsApp (best lead channel for this business)
       const waText = `Hi Panchsheel Custom Lab,%0A%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}${email ? `%0AEmail: ${encodeURIComponent(email)}` : ''}%0A%0A${encodeURIComponent(message)}`;
       window.open(`https://wa.me/919990903566?text=${waText}`, '_blank');
 
@@ -94,3 +254,4 @@
   // Set year in footer
   const yr = document.getElementById('yr'); if (yr) yr.textContent = new Date().getFullYear();
 })();
+

@@ -230,6 +230,80 @@
   </div>
 </section>
 
+<!-- ============================ CALCULATOR ============================ -->
+<section class="section" style="background:var(--bg-soft)">
+  <div class="container-x">
+    <div class="section-head reveal">
+      <span class="eyebrow" data-en="Instant Cost Estimator" data-hi="तुरंत रेट कैलकुलेटर">Instant Cost Estimator</span>
+      <h2 data-en="Calculate Your Bulk Printing Discounts" data-hi="बल्क प्रिंटिंग डिस्काउंट का अंदाज़ा लगाएं">Calculate Your Bulk Printing Discounts</h2>
+      <p class="muted" data-en="Select a product and adjust quantity to see our dynamic wholesale pricing scale in real-time." data-hi="प्रोडक्ट और क्वांटिटी चुनें और देखें कि बल्क ऑर्डर पर हमारी कीमतें कैसे कम होती हैं।">Select a product and adjust quantity to see our dynamic wholesale pricing scale in real-time.</p>
+    </div>
+
+    <div class="calc-card reveal" style="max-width:860px;margin:0 auto">
+      <div class="calc-grid">
+        <!-- Input controls -->
+        <div style="display:flex;flex-direction:column;gap:1.5rem">
+          <div class="calc-control">
+            <label class="label" for="calcProduct" data-en="1. Choose Product" data-hi="1. प्रोडक्ट चुनें">1. Choose Product</label>
+            <select id="calcProduct" class="field calc-select">
+              <option value="tshirt" data-en="Round-Neck T-Shirt" data-hi="गोल-गला टी-शर्ट">Round-Neck T-Shirt</option>
+              <option value="polo" data-en="Polo T-Shirt" data-hi="पोलो टी-शर्ट (कॉलर)">Polo T-Shirt</option>
+              <option value="mug" data-en="White Photo Mug" data-hi="सफ़ेद फोटो मग">White Photo Mug</option>
+              <option value="bottle" data-en="Steel Sipper Bottle" data-hi="स्टील सिपर बोतल">Steel Sipper Bottle</option>
+              <option value="pillow" data-en="Photo Pillow" data-hi="फोटो तकिया (कुशन)">Photo Pillow</option>
+              <option value="frame" data-en="MDF Photo Frame" data-hi="MDF फोटो फ्रेम">MDF Photo Frame</option>
+              <option value="keychain" data-en="Photo Keychain" data-hi="फोटो कीचेन">Photo Keychain</option>
+            </select>
+          </div>
+
+          <div class="calc-control">
+            <label class="label" for="calcQty" data-en="2. Quantity (pcs)" data-hi="2. मात्रा (पीस)">2. Quantity (pcs)</label>
+            <div class="qty-input-group">
+              <button id="calcMinus" class="qty-btn" aria-label="Decrease quantity">−</button>
+              <input id="calcQty" type="number" min="1" value="10" class="qty-field" />
+              <button id="calcPlus" class="qty-btn" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Result display -->
+        <div class="calc-result-card">
+          <div>
+            <div class="calc-price-row">
+              <span class="muted" style="font-size:.9rem" data-en="Unit Price" data-hi="प्रति पीस क़ीमत">Unit Price</span>
+              <span id="valUnit" class="price" style="font-size:1.3rem">₹129</span>
+            </div>
+            <div style="margin-top:.75rem">
+              <span id="badgeDisc" class="badge-discount" style="display:none">✓ Save 15% Wholesale!</span>
+            </div>
+          </div>
+
+          <div class="calc-total-row">
+            <span class="calc-total-label" data-en="Estimated Total" data-hi="अनुमानित कुल">Estimated Total</span>
+            <div id="valTotal" class="calc-total-val">₹1,290</div>
+          </div>
+
+          <a id="btnCalcWa" href="#" target="_blank" class="btn btn-whats" style="justify-content:center;padding:.9rem">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11 11 0 0 0 3.3 17.1L2 22l5-1.3a11 11 0 0 0 13.5-17.2zM12 20a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20z"/></svg>
+            <span data-en="Send Quote on WhatsApp" data-hi="व्हाट्सएप पर कोट भेजें">Send Quote on WhatsApp</span>
+          </a>
+
+          <div class="calc-bullet-list">
+            <div class="calc-bullet">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+              <span data-en="GST &amp; design help included" data-hi="GST और डिज़ाइन सहायता शामिल">GST &amp; design help included</span>
+            </div>
+            <div class="calc-bullet">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+              <span data-en="Doorstep delivery across Delhi NCR" data-hi="दिल्ली NCR में डोरस्टेप डिलीवरी">Doorstep delivery across Delhi NCR</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============================ TESTIMONIALS ============================ -->
 <section class="section">
   <div class="container-x">
