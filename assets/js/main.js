@@ -1,9 +1,100 @@
 // Panchsheel Custom Lab — main.js
 (function () {
-  // Mobile nav
-  const btn = document.getElementById('navToggle');
-  const menu = document.getElementById('mobileMenu');
-  if (btn && menu) btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+  // Dynamic Mobile Drawer Navigation Overlay
+  const buildMobileDrawer = () => {
+    if (document.getElementById('mobileNavDrawer')) return;
+
+    const overlay = document.createElement('div');
+    overlay.className = 'mobile-nav-overlay';
+    overlay.id = 'mobileNavOverlay';
+    
+    const drawer = document.createElement('div');
+    drawer.className = 'mobile-nav-drawer';
+    drawer.id = 'mobileNavDrawer';
+    
+    const headerHtml = `
+      <div class="drawer-header">
+        <a href="index.html" class="logo">
+          <img src="assets/img/logo.svg" alt="" class="logo-mark" width="34" height="34" />
+          <span class="logo-text" style="font-size: 0.9rem">
+            <span class="brand-line">Panchsheel</span>
+            <span class="sub-line" style="font-size: 0.6rem">Custom Lab</span>
+          </span>
+        </a>
+        <button id="mobileNavClose" class="drawer-close-btn" aria-label="Close menu">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+    `;
+    
+    const desktopLinks = document.querySelectorAll('.site-header nav a');
+    let drawerLinksHtml = '<div class="drawer-links">';
+    desktopLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      const text = link.textContent.trim();
+      const en = link.getAttribute('data-en') || text;
+      const hi = link.getAttribute('data-hi') || text;
+      const isActive = link.classList.contains('active') ? 'active' : '';
+      drawerLinksHtml += `<a href="${href}" class="${isActive}" data-en="${en}" data-hi="${hi}">${text}</a>`;
+    });
+    drawerLinksHtml += '</div>';
+    
+    const footerHtml = `
+      <div class="drawer-footer">
+        <div class="drawer-lang-row">
+          <span class="drawer-lang-label" data-en="Language" data-hi="भाषा">Language</span>
+          <div class="lang-toggle" aria-label="Language toggle">
+            <button data-lang="en">EN</button>
+            <button data-lang="hi">हिं</button>
+          </div>
+        </div>
+        <a href="https://wa.me/919990903566?text=Hi%2C%20I%20want%20to%20order%20a%20custom%20print" class="btn btn-whats" style="justify-content:center; width:100%">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="margin-right:4px;display:inline-block;vertical-align:middle"><path d="M20.5 3.5A11 11 0 0 0 3.3 17.1L2 22l5-1.3a11 11 0 0 0 13.5-17.2zM12 20a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20z"/></svg>
+          <span data-en="Order on WhatsApp" data-hi="व्हाट्सएप पर ऑर्डर करें">Order on WhatsApp</span>
+        </a>
+      </div>
+    `;
+    
+    drawer.innerHTML = headerHtml + drawerLinksHtml + footerHtml;
+    
+    document.body.appendChild(overlay);
+    document.body.appendChild(drawer);
+    
+    const toggleBtn = document.getElementById('navToggle');
+    const closeBtn = document.getElementById('mobileNavClose');
+    
+    const openDrawer = () => {
+      drawer.classList.add('drawer-open');
+      overlay.classList.add('drawer-open');
+      document.body.classList.add('drawer-active');
+    };
+    
+    const closeDrawer = () => {
+      drawer.classList.remove('drawer-open');
+      overlay.classList.remove('drawer-open');
+      document.body.classList.remove('drawer-active');
+    };
+    
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openDrawer();
+      });
+    }
+    
+    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+    
+    drawer.querySelectorAll('.drawer-links a').forEach(a => {
+      a.addEventListener('click', closeDrawer);
+    });
+    
+    drawer.querySelectorAll('.lang-toggle button').forEach(b => {
+      b.addEventListener('click', () => {
+        applyLang(b.dataset.lang);
+      });
+    });
+  };
 
   // Sticky header shadow
   const header = document.querySelector('.site-header');
@@ -229,6 +320,7 @@
   };
 
   // Run initial calculations
+  buildMobileDrawer();
   injectStickyBar();
   applyLang(storedLang);
   updateCalculator();

@@ -411,19 +411,206 @@ details.faq p{margin-top:.75rem;color:var(--muted)}
 }
 
 /* =========================================================
-   Advanced Enterprise-Grade Responsiveness & Speed Fixes
+   Advanced Premium Responsiveness & Mobile-First Overhaul
    ========================================================= */
 
-/* Eliminate potential horizontal overflow on tiny 320px+ devices */
-body, html {
-  max-width: 100vw;
-  overflow-x: hidden;
+/* Core Viewport Guard */
+html, body {
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+  width: 100%;
 }
 
-/* Fix mobile responsive container margins and font-scaling */
+/* Specificity overrides for responsive menu display */
+@media (max-width: 768px) {
+  .hide-sm {
+    display: none !important;
+  }
+  .show-sm {
+    display: block !important;
+  }
+  .site-header nav.hide-sm {
+    display: none !important;
+  }
+}
+
+/* Prevent auto-zoom on iOS Safari for form elements */
+.field, select.field, textarea.field, input.field {
+  font-size: 16px !important;
+}
+
+/* Fluid responsive Grid for columns */
+.cols-4 {
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+  .cols-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1024px) {
+  .cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Premium Mobile Drawer Navigation */
+.mobile-nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 20, 54, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.mobile-nav-overlay.drawer-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-nav-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 310px;
+  max-width: 85vw;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 1000;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: -10px 0 40px rgba(10, 19, 64, 0.15);
+  display: flex;
+  flex-direction: column;
+  padding: 2.25rem 1.75rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+.mobile-nav-drawer.drawer-open {
+  transform: translateX(0);
+}
+
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.drawer-close-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--bg-soft);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.drawer-close-btn:hover {
+  background: #eef0f6;
+  transform: scale(1.05);
+}
+.drawer-close-btn:active {
+  transform: scale(0.95);
+}
+
+.drawer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+.drawer-links a {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ink-2);
+  padding: 0.6rem 0.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.drawer-links a:hover, .drawer-links a.active {
+  color: var(--brand);
+  background: var(--bg-soft);
+  padding-left: 0.9rem;
+}
+.drawer-links a:after {
+  content: "→";
+  opacity: 0;
+  transform: translateX(-5px);
+  transition: all 0.2s ease;
+}
+.drawer-links a:hover:after, .drawer-links a.active:after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.drawer-footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+.drawer-lang-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.drawer-lang-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Disable body scroll when drawer is open */
+body.drawer-active {
+  overflow: hidden !important;
+  touch-action: none;
+}
+
+/* Clean hide old mobileMenu */
+#mobileMenu {
+  display: none !important;
+}
+
+/* Adjust Floating WhatsApp Positioning to prevent overlaps */
+@media (max-width: 768px) {
+  .fab-whats {
+    bottom: 5.5rem !important;
+    right: 1.25rem !important;
+    width: 54px !important;
+    height: 54px !important;
+    z-index: 90 !important;
+  }
+}
+@media (max-width: 480px) {
+  .fab-whats {
+    bottom: 5.2rem !important;
+    right: 1rem !important;
+    width: 48px !important;
+    height: 48px !important;
+  }
+}
+
+/* Mobile responsive padding and typographic constraints */
 @media (max-width: 480px) {
   .container-x {
-    padding-inline: 1rem !important;
+    padding-inline: 1.15rem !important;
   }
   .section {
     padding: 3rem 0 !important;
@@ -437,11 +624,11 @@ body, html {
     line-height: 1.2;
   }
   .calc-card {
-    padding: 1.5rem 1.1rem !important;
+    padding: 1.65rem 1.25rem !important;
     border-radius: var(--r-lg) !important;
   }
   .calc-result-card {
-    padding: 1.25rem 1.1rem !important;
+    padding: 1.35rem 1.25rem !important;
   }
   .calc-total-val {
     font-size: 2.1rem !important;
@@ -451,24 +638,16 @@ body, html {
     height: 42px !important;
   }
   .btn {
-    padding: 0.75rem 1.25rem !important;
-    border-radius: 0.7rem !important;
+    padding: 0.8rem 1.35rem !important;
+    border-radius: 0.75rem !important;
     font-size: 0.95rem !important;
   }
-  /* Avoid tiny elements on product lists */
   .grid-auto {
-    gap: 1rem !important;
-  }
-  /* Ensure the fab button doesn't cover sticky content */
-  .fab-whats {
-    bottom: 4.8rem !important;
-    right: 1rem !important;
-    width: 52px !important;
-    height: 52px !important;
+    gap: 1.15rem !important;
   }
 }
 
-/* Premium Mobile Sticky Conversion Bar */
+/* Premium Mobile Sticky Bottom Conversion Bar */
 .mobile-sticky-bar {
   position: fixed;
   bottom: 0;
@@ -478,8 +657,8 @@ body, html {
   backdrop-filter: blur(16px) saturate(160%);
   -webkit-backdrop-filter: blur(16px) saturate(160%);
   border-top: 1px solid var(--line);
-  padding: 0.65rem 1rem;
-  z-index: 99;
+  padding: 0.65rem 1.25rem;
+  z-index: 98; /* Under drawer overlay */
   display: flex;
   align-items: center;
   justify-content: space-between;
