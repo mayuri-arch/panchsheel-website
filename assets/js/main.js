@@ -27,7 +27,7 @@
       </div>
     `;
     
-    const desktopLinks = document.querySelectorAll('.site-header nav a');
+    const desktopLinks = document.querySelectorAll('.desktop-nav a, .site-header nav a');
     let drawerLinksHtml = '<div class="drawer-links">';
     desktopLinks.forEach(link => {
       const href = link.getAttribute('href');
