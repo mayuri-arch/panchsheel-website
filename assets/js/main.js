@@ -125,11 +125,16 @@
   const onScroll = () => { if (!header) return; header.classList.toggle('scrolled', window.scrollY > 20); };
   window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
-  // Scroll reveal
+  // Scroll reveal (premium staggered)
   const io = new IntersectionObserver((entries) => {
     entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  // Staggered reveal for grid children
+  document.querySelectorAll('.grid-auto').forEach((grid) => {
+    const children = grid.querySelectorAll('.reveal');
+    children.forEach((child, i) => { child.style.transitionDelay = `${i * 0.08}s`; });
+  });
 
   // Active nav link
   const path = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
