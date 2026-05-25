@@ -60,9 +60,6 @@
     document.body.appendChild(overlay);
     document.body.appendChild(drawer);
     
-    const toggleBtn = document.getElementById('navToggle');
-    const closeBtn = document.getElementById('mobileNavClose');
-    
     const openDrawer = () => {
       drawer.classList.add('drawer-open');
       overlay.classList.add('drawer-open');
@@ -74,6 +71,33 @@
       overlay.classList.remove('drawer-open');
       document.body.classList.remove('drawer-active');
     };
+    
+    // Robust document-level event delegation (intercepts clicks under all circumstances)
+    document.addEventListener('click', (e) => {
+      const toggleBtn = e.target.closest('#navToggle');
+      if (toggleBtn) {
+        e.preventDefault();
+        e.stopPropagation();
+        openDrawer();
+        return;
+      }
+      
+      const closeBtn = e.target.closest('#mobileNavClose');
+      if (closeBtn) {
+        e.preventDefault();
+        closeDrawer();
+        return;
+      }
+      
+      if (e.target === overlay) {
+        closeDrawer();
+        return;
+      }
+    }, true);
+    
+    // Local fallback listener bindings
+    const toggleBtn = document.getElementById('navToggle');
+    const closeBtn = document.getElementById('mobileNavClose');
     
     if (toggleBtn) {
       toggleBtn.addEventListener('click', (e) => {
@@ -319,11 +343,20 @@
     }, { passive: true });
   };
 
-  // Run initial calculations
-  buildMobileDrawer();
-  injectStickyBar();
-  applyLang(storedLang);
-  updateCalculator();
+  // Run initial calculations and setup defensively
+  const init = () => {
+    buildMobileDrawer();
+    injectStickyBar();
+    applyLang(storedLang);
+    updateCalculator();
+  };
+
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    init();
+  } else {
+    document.addEventListener('DOMContentLoaded', init);
+  }
+  window.addEventListener('load', init);
 
   // ===== Contact form =====
   const form = document.getElementById('contactForm');
