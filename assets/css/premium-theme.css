@@ -71,35 +71,6 @@ h2 { letter-spacing: -0.025em !important; }
 }
 
 /* ========================= ANIMATIONS ========================= */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(28px); }
-  to { opacity: 1; transform: none; }
-}
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-@keyframes glowPulse {
-  0%, 100% { box-shadow: 0 0 20px rgba(79,124,255,0.1); }
-  50% { box-shadow: 0 0 40px rgba(79,124,255,0.2), 0 0 80px rgba(79,124,255,0.05); }
-}
-@keyframes borderGlow {
-  0%, 100% { border-color: rgba(79,124,255,0.15); }
-  50% { border-color: rgba(79,124,255,0.35); }
-}
-@keyframes dotFloat {
-  0%, 100% { opacity: 0.3; transform: translateY(0); }
-  50% { opacity: 0.6; transform: translateY(-12px); }
-}
-
 /* Scroll reveal override for premium timing */
 .reveal {
   opacity: 0;
@@ -225,8 +196,6 @@ h2 { letter-spacing: -0.025em !important; }
 .hero-badge {
   background: rgba(255,255,255,0.05) !important;
   border: 1px solid rgba(255,255,255,0.08) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
   font-size: 0.78rem !important;
   letter-spacing: 0.02em !important;
 }
@@ -248,12 +217,10 @@ h2 { letter-spacing: -0.025em !important; }
 
 /* Hero floating cards — glass */
 .hero-float {
-  background: rgba(12,14,22,0.85) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
+  background: rgba(12,14,22,0.9) !important;
   border: 1px solid var(--glass-border) !important;
   color: var(--ink) !important;
-  box-shadow: var(--shadow-lg), 0 0 40px rgba(79,124,255,0.06) !important;
+  box-shadow: var(--shadow-lg) !important;
   border-radius: var(--r-lg) !important;
 }
 .hero-float .muted, .hero-float [style*="color:var(--muted)"] {
@@ -314,8 +281,6 @@ h2 { letter-spacing: -0.025em !important; }
 .blog-card {
   background: var(--glass-bg) !important;
   border: 1px solid var(--glass-border) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
   transition: all 0.4s cubic-bezier(0.16,1,0.3,1) !important;
 }
 .card:hover,
@@ -338,8 +303,6 @@ h2 { letter-spacing: -0.025em !important; }
 .product-card {
   background: var(--glass-bg) !important;
   border: 1px solid var(--glass-border) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
   transition: all 0.4s cubic-bezier(0.16,1,0.3,1) !important;
 }
 .product-card:hover {
@@ -532,8 +495,6 @@ section .reveal img[style*="border-radius"] {
 .calc-result-card {
   background: var(--glass-bg) !important;
   border: 1px solid var(--glass-border) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
 }
 .calc-price-row {
   border-bottom-color: var(--glass-border) !important;
@@ -590,8 +551,6 @@ section .reveal img[style*="border-radius"] {
 details.faq {
   background: var(--glass-bg) !important;
   border: 1px solid var(--glass-border) !important;
-  backdrop-filter: blur(8px) !important;
-  -webkit-backdrop-filter: blur(8px) !important;
 }
 details.faq[open] {
   border-color: var(--glass-border-hover) !important;
@@ -857,8 +816,6 @@ article {
   background: var(--glass-bg) !important;
   border: 1px solid var(--glass-border) !important;
   border-radius: var(--r-lg) !important;
-  backdrop-filter: blur(8px) !important;
-  -webkit-backdrop-filter: blur(8px) !important;
   transition: all 0.4s cubic-bezier(0.16,1,0.3,1) !important;
 }
 article:hover {
@@ -947,32 +904,9 @@ section[style*="padding-top:3rem"] {
   border: 1px solid var(--glass-border) !important;
 }
 
-/* ========================= AMBIENT BACKGROUND EFFECTS ========================= */
-
-/* Subtle ambient orb on body */
-body::before {
-  content: "";
-  position: fixed;
-  top: -200px;
-  right: -200px;
-  width: 600px;
-  height: 600px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(79,124,255,0.04), transparent 70%);
-  pointer-events: none;
-  z-index: -1;
-}
-body::after {
-  content: "";
-  position: fixed;
-  bottom: -300px;
-  left: -200px;
-  width: 700px;
-  height: 700px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(167,139,250,0.03), transparent 70%);
-  pointer-events: none;
-  z-index: -1;
+/* ========================= SECTION PAINT CONTAINMENT ========================= */
+.section {
+  contain: layout style;
 }
 
 /* ========================= HERO GRID LAYOUT FIX ========================= */
@@ -1131,18 +1065,17 @@ body::after {
     background: rgba(255,255,255,0.08) !important;
   }
   
-  /* High-end ambient blur background behind mobile text */
+  /* Ambient glow via lightweight gradient (no filter:blur for perf) */
   .hero::before {
     content: "";
     position: absolute;
-    top: 15%;
+    top: 5%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 280px;
-    height: 280px;
+    transform: translateX(-50%);
+    width: 320px;
+    height: 320px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(79, 124, 255, 0.15), transparent 70%);
-    filter: blur(40px);
+    background: radial-gradient(circle, rgba(79, 124, 255, 0.10), transparent 65%);
     pointer-events: none;
     z-index: 0;
   }
@@ -1165,9 +1098,7 @@ body::after {
   .hero-float {
     display: flex !important;
     position: absolute !important;
-    background: rgba(12, 14, 22, 0.9) !important;
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
+    background: rgba(12, 14, 22, 0.92) !important;
     border: 1px solid rgba(255,255,255,0.06) !important;
     padding: 0.55rem 0.85rem !important;
     box-shadow: 0 10px 25px rgba(0,0,0,0.4) !important;

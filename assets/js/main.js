@@ -356,12 +356,8 @@
     updateCalculator();
   };
 
-  if (document.readyState === 'complete' || document.readyState === 'interactive') {
-    init();
-  } else {
-    document.addEventListener('DOMContentLoaded', init);
-  }
-  window.addEventListener('load', init);
+  // Run initialization (defer attribute guarantees DOM is ready)
+  init();
 
   // ===== Contact form =====
   const form = document.getElementById('contactForm');
