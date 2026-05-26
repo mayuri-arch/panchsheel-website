@@ -4,3 +4,4 @@ Thumbs.db
 .idea/
 node_modules/
 .vercel
+lighthouse_mobile*.json
