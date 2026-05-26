@@ -380,7 +380,7 @@
       if (err) err.classList.add('hidden');
       if (submitBtn) { submitBtn.disabled = true; submitBtn.dataset.old = submitBtn.innerHTML; submitBtn.innerHTML = 'Sending…'; }
 
-      const WEB3_KEY = 'YOUR_WEB3FORMS_KEY';
+      const WEB3_KEY = '0ff18deb-2f95-4012-90d0-0928514e8fd1';
       let sent = false;
       if (WEB3_KEY && WEB3_KEY !== 'YOUR_WEB3FORMS_KEY') {
         try {
