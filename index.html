@@ -19,6 +19,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preconnect" href="https://images.unsplash.com" />
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" as="style" />
+<link rel="preload" href="assets/css/styles.css?v=4.0" as="style" />
+<link rel="preload" href="assets/css/premium-theme.css?v=4.0" as="style" />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/css/styles.css?v=4.0" />
 <link rel="stylesheet" href="assets/css/premium-theme.css?v=4.0" />
@@ -196,6 +199,8 @@
   </div>
   </header>
 
+<main id="main-content">
+
 <!-- ============================ HERO ============================ -->
 <section class="hero on-dark">
   <div class="container-x" style="display:grid;grid-template-columns:1fr;gap:3rem;padding-top:4.5rem;padding-bottom:4.5rem">
@@ -227,7 +232,7 @@
 
     <div class="reveal" style="position:relative;max-width:520px;justify-self:end;width:100%">
       <div class="hero-photo">
-        <img src="assets/img/hero_presentation.webp" alt="Premium custom printed luxury products collection floating in dark glassmorphic studio" loading="eager" fetchpriority="high" />
+        <img src="assets/img/hero_presentation.webp" alt="Premium custom printed luxury products collection floating in dark glassmorphic studio" loading="eager" fetchpriority="high" width="500" height="625" />
       </div>
       <div class="hero-float top">
         <div style="width:38px;height:38px;border-radius:12px;background:rgba(34,197,94,.12);color:#15803d;display:flex;align-items:center;justify-content:center;font-weight:700">✓</div>
@@ -256,10 +261,10 @@
 <section class="section">
   <div class="container-x">
     <div class="grid-auto cols-2 cols-4">
-      <div class="feature reveal"><div class="feature-ico">⚡</div><h3 data-en="Same-Day Printing" data-hi="उसी दिन प्रिंटिंग">Same-Day Printing</h3><p class="muted" style="font-size:.92rem;margin-top:.35rem" data-en="Urgent gift or event? Walk in before 12pm — pickup the same evening." data-hi="अर्जेंट गिफ्ट या इवेंट? दोपहर 12 से पहले आएं — शाम तक तैयार।">Urgent gift or event? Walk in before 12pm — pickup the same evening.</p></div>
-      <div class="feature reveal"><div class="feature-ico">🎨</div><h3 data-en="Lifetime Colour" data-hi="लाइफटाइम रंग">Lifetime Colour</h3><p class="muted" style="font-size:.92rem;margin-top:.35rem" data-en="Sublimation + DTF with imported inks. Wash 100 times — colours stay sharp." data-hi="इम्पोर्टेड इंक के साथ सब्लिमेशन + DTF। 100 बार धोइए — रंग वैसे के वैसे।">Sublimation + DTF with imported inks. Wash 100 times — colours stay sharp.</p></div>
-      <div class="feature reveal"><div class="feature-ico">📦</div><h3 data-en="Bulk Orders" data-hi="बल्क ऑर्डर">Bulk Orders</h3><p class="muted" style="font-size:.92rem;margin-top:.35rem" data-en="Schools, corporates, events — wholesale rates from just 25 pieces." data-hi="स्कूल, कॉर्पोरेट, इवेंट — सिर्फ 25 पीस से होलसेल रेट।">Schools, corporates, events — wholesale rates from just 25 pieces.</p></div>
-      <div class="feature reveal"><div class="feature-ico">💰</div><h3 data-en="Honest Pricing" data-hi="ईमानदार क़ीमत">Honest Pricing</h3><p class="muted" style="font-size:.92rem;margin-top:.35rem" data-en="What we quote is what you pay. No hidden design or setup fees." data-hi="जो रेट बताते हैं वही लेते हैं। कोई छुपा चार्ज नहीं।">What we quote is what you pay. No hidden design or setup fees.</p></div>
+      <div class="feature reveal"><div class="feature-ico">⚡</div><h2 style="font-size:1.15rem;font-weight:600;margin-bottom:0" data-en="Same-Day Printing" data-hi="उसी दिन प्रिंटिंग">Same-Day Printing</h2><p class="muted" style="font-size:.92rem;margin-top:.35rem" data-en="Urgent gift or event? Walk in before 12pm — pickup the same evening." data-hi="अर्जेंट गिफ्ट या इवेंट? दोपहर 12 से पहले आएं — शाम तक तैयार।">Urgent gift or event? Walk in before 12pm — pickup the same evening.</p></div>
+      <div class="feature reveal"><div class="feature-ico">🎨</div><h2 style="font-size:1.15rem;font-weight:600;margin-bottom:0" data-en="Lifetime Colour" data-hi="लाइफटाइम रंग">Lifetime Colour</h2><p class="muted" style="font-size:.92rem;margin-top:.35rem" data-en="Sublimation + DTF with imported inks. Wash 100 times — colours stay sharp." data-hi="इम्पोर्टेड इंक के साथ सब्लिमेशन + DTF। 100 बार धोइए — रंग वैसे के वैसे।">Sublimation + DTF with imported inks. Wash 100 times — colours stay sharp.</p></div>
+      <div class="feature reveal"><div class="feature-ico">📦</div><h2 style="font-size:1.15rem;font-weight:600;margin-bottom:0" data-en="Bulk Orders" data-hi="बल्क ऑर्डर">Bulk Orders</h2><p class="muted" style="font-size:.92rem;margin-top:.35rem" data-en="Schools, corporates, events — wholesale rates from just 25 pieces." data-hi="स्कूल, कॉर्पोरेट, इवेंट — सिर्फ 25 पीस से होलसेल रेट।">Schools, corporates, events — wholesale rates from just 25 pieces.</p></div>
+      <div class="feature reveal"><div class="feature-ico">💰</div><h2 style="font-size:1.15rem;font-weight:600;margin-bottom:0" data-en="Honest Pricing" data-hi="ईमानदार क़ीमत">Honest Pricing</h2><p class="muted" style="font-size:.92rem;margin-top:.35rem" data-en="What we quote is what you pay. No hidden design or setup fees." data-hi="जो रेट बताते हैं वही लेते हैं। कोई छुपा चार्ज नहीं।">What we quote is what you pay. No hidden design or setup fees.</p></div>
     </div>
   </div>
 </section>
@@ -276,20 +281,20 @@
     <div class="grid-auto cols-2 cols-4">
       <a href="products.html" class="product-card reveal">
         <span class="badge">Bestseller</span>
-        <div class="product-shot"><img loading="lazy" src="assets/img/custom_tshirt.webp" alt="Premium cotton custom printed t-shirt" /></div>
+        <div class="product-shot"><img loading="lazy" src="assets/img/custom_tshirt.webp" alt="Premium cotton custom printed t-shirt" width="400" height="400" /></div>
         <div class="product-body"><div class="product-title">Custom T-Shirts</div><div class="product-meta">Cotton · DTF / Sublimation</div><div class="product-row"><span class="price">₹149+</span><span class="btn btn-ghost btn-sm">Customize →</span></div></div>
       </a>
       <a href="products.html" class="product-card reveal">
         <span class="badge">Top Gift</span>
-        <div class="product-shot"><img loading="lazy" src="assets/img/custom_mug.webp" alt="White ceramic photo mug custom printed" /></div>
+        <div class="product-shot"><img loading="lazy" src="assets/img/custom_mug.webp" alt="White ceramic photo mug custom printed" width="400" height="400" /></div>
         <div class="product-body"><div class="product-title">Photo Mugs</div><div class="product-meta">Ceramic · Dishwasher-safe</div><div class="product-row"><span class="price">₹129+</span><span class="btn btn-ghost btn-sm">Customize →</span></div></div>
       </a>
       <a href="products.html" class="product-card reveal">
-        <div class="product-shot"><img loading="lazy" src="assets/img/custom_pillow.webp" alt="Personalised photo pillow with zipper" /></div>
+        <div class="product-shot"><img loading="lazy" src="assets/img/custom_pillow.webp" alt="Personalised photo pillow with zipper" width="400" height="400" /></div>
         <div class="product-body"><div class="product-title">Photo Pillows</div><div class="product-meta">Microfiber · Filler included</div><div class="product-row"><span class="price">₹249+</span><span class="btn btn-ghost btn-sm">Customize →</span></div></div>
       </a>
       <a href="products.html" class="product-card reveal">
-        <div class="product-shot"><img loading="lazy" src="assets/img/custom_frame.webp" alt="Custom MDF photo frame" /></div>
+        <div class="product-shot"><img loading="lazy" src="assets/img/custom_frame.webp" alt="Custom MDF photo frame" width="400" height="400" /></div>
         <div class="product-body"><div class="product-title">Photo Frames</div><div class="product-meta">MDF · Multiple sizes</div><div class="product-row"><span class="price">₹199+</span><span class="btn btn-ghost btn-sm">Customize →</span></div></div>
       </a>
     </div>
@@ -491,6 +496,8 @@
     </div>
   </div>
 </section>
+
+</main>
 
 <!-- ============================ FOOTER ============================ -->
 <footer class="site-footer">

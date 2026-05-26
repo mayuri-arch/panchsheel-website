@@ -22,7 +22,7 @@
   /* ── Text ── */
   --ink: #f0f0f5 !important;
   --ink-2: #b8bcc8 !important;
-  --muted: #6b7280 !important;
+  --muted: #94a3b8 !important;
   --line: rgba(255,255,255,0.06) !important;
 
   /* ── Brand (adapted for dark) ── */
@@ -1066,5 +1066,139 @@ body::after {
 }
 .mobile-nav-drawer.drawer-open {
   transform: translateX(0) !important;
+}
+
+/* =========================================================
+   Panchsheel Custom Lab — Mobile Hero Visual Overhaul (WOW)
+   ========================================================= */
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 3.5rem !important;
+    padding-bottom: 3.5rem !important;
+    text-align: center !important;
+  }
+  .hero > .container-x {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2.5rem !important;
+    align-items: center !important;
+  }
+  .hero-badge {
+    margin: 0 auto !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding: 0.5rem 1.1rem !important;
+    font-size: 0.72rem !important;
+    letter-spacing: 0.03em !important;
+  }
+  .hero h1.title-xl {
+    font-size: clamp(2.1rem, 7vw, 2.75rem) !important;
+    font-weight: 800 !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.025em !important;
+    margin-top: 1rem !important;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.5) !important;
+  }
+  .hero h1.title-xl span {
+    display: inline-block !important;
+  }
+  .hero p {
+    font-size: 0.98rem !important;
+    line-height: 1.55 !important;
+    color: #cbd5e1 !important;
+    margin: 1rem auto 0 !important;
+    max-width: 90% !important;
+  }
+  .hero div[style*="display:flex;flex-wrap:wrap;gap:.75rem"] {
+    justify-content: center !important;
+    width: 100% !important;
+    gap: 0.85rem !important;
+    margin-top: 1.85rem !important;
+  }
+  .hero .btn {
+    width: 100% !important;
+    max-width: 320px !important;
+    padding: 0.9rem 1.5rem !important;
+    font-size: 0.95rem !important;
+    box-shadow: 0 12px 28px rgba(34, 197, 94, 0.25) !important;
+  }
+  .hero .btn-outline {
+    border-color: rgba(255,255,255,0.15) !important;
+    background: rgba(255,255,255,0.02) !important;
+    box-shadow: none !important;
+  }
+  .hero .btn-outline:hover {
+    background: rgba(255,255,255,0.08) !important;
+  }
+  
+  /* High-end ambient blur background behind mobile text */
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(79, 124, 255, 0.15), transparent 70%);
+    filter: blur(40px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  /* Mockup frame styling on mobile */
+  .hero .hero-photo {
+    border-radius: var(--r-lg) !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    box-shadow: 
+      0 20px 45px rgba(0,0,0,0.6), 
+      0 0 50px rgba(79, 124, 255, 0.12) !important;
+    overflow: hidden !important;
+    max-width: 92% !important;
+    margin: 0 auto !important;
+    transform: translateY(0) !important;
+    transition: transform 0.3s ease !important;
+  }
+  
+  /* Re-enable and format the float tags on mobile for premium details */
+  .hero-float {
+    display: flex !important;
+    position: absolute !important;
+    background: rgba(12, 14, 22, 0.9) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255,255,255,0.06) !important;
+    padding: 0.55rem 0.85rem !important;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4) !important;
+    border-radius: var(--r-sm) !important;
+    gap: 0.5rem !important;
+  }
+  .hero-float.top {
+    top: 1rem !important;
+    left: 0.5rem !important;
+    transform: scale(0.85) !important;
+  }
+  .hero-float.bottom {
+    bottom: 1rem !important;
+    right: 0.5rem !important;
+    transform: scale(0.85) !important;
+  }
+}
+
+/* =========================================================
+   Accessibility Color Contrast Overrides
+   ========================================================= */
+.footer-compact-links a {
+  color: #cbd5e1 !important;
+}
+.footer-compact-links a:hover {
+  color: var(--gold) !important;
+}
+.footer-compact-bottom {
+  color: #94a3b8 !important;
+}
+.footer-tagline {
+  color: #cbd5e1 !important;
 }
 
